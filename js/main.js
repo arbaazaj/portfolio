@@ -1,53 +1,45 @@
-const container = document.getElementById("projectContainer");
+document.addEventListener("DOMContentLoaded", () => {
 
-function createCarousel(images) {
-  if (!images || images.length === 0) return "";
+  const container = document.getElementById("projectContainer");
 
-  return `
-    <div class="carousel">
-      <img src="${images[0]}" class="carousel-img"/>
+  if (!container) {
+    console.error("Project container not found");
+    return;
+  }
 
-      <button class="nav prev">‹</button>
-      <button class="nav next">›</button>
+  projects.forEach(project => {
+    const card = document.createElement("div");
+    card.className = "project-card";
 
-      <div class="indicators">
-        ${images.map((_, i) =>
-          `<span class="${i === 0 ? "active" : ""}"></span>`
-        ).join("")}
+    let imagesHTML = "";
+
+    if (project.screenshots && project.screenshots.length > 0) {
+      imagesHTML = `
+        <div class="carousel">
+          <img src="${project.screenshots[0]}" class="carousel-img" />
+        </div>
+      `;
+    }
+
+    card.innerHTML = `
+      ${imagesHTML}
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+
+      <div class="tags">
+        ${project.tech.map(t => `<span>${t}</span>`).join("")}
       </div>
-    </div>
-  `;
-}
 
-projects.forEach(project => {
-  const card = document.createElement("div");
-  card.className = "project-card";
+      <div class="links">
+        ${
+          project.github.startsWith("http")
+            ? `<a href="${project.github}" target="_blank">GitHub</a>`
+            : `<span class="private">${project.github}</span>`
+        }
+      </div>
+    `;
 
-  card.innerHTML = `
-    ${createCarousel(project.screenshots)}
-    <h3>${project.title}</h3>
-    <p>${project.description}</p>
+    container.appendChild(card);
+  });
 
-    <div class="tags">
-      ${project.tech.map(t => `<span>${t}</span>`).join("")}
-    </div>
-
-    <div class="links">
-      ${
-        project.github.startsWith("http")
-          ? `<a href="${project.github}" target="_blank">GitHub</a>`
-          : `<span class="private">${project.github}</span>`
-      }
-    </div>
-  `;
-
-  container.appendChild(card);
-});
-
-document.addEventListener("click", e => {
-  if (!e.target.classList.contains("nav")) return;
-
-  const carousel = e.target.closest(".carousel");
-  const img = carousel.querySelector(".carousel-img");
-  const images = [...carousel.dataset.images];
 });
