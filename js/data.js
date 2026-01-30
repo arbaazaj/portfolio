@@ -4,19 +4,17 @@ const projects = [
         description: "Print-on-demand Flutter app allowing users to customize products.",
         tech: ["Flutter", "Firebase", "Canvas", "UI/UX"],
         github: "Private Repository",
-        images: [
-            "assets/screenshots/expense_1.png",
-            "assets/screenshots/expense_2.png",
-            "assets/screenshots/expense_3.png"
-        ]
-
     },
     {
         title: "Expense Tracker",
         description: "Expense tracking app with charts and Supabase authentication.",
         tech: ["Flutter", "Supabase", "Bloc", "Charts"],
         github: "https://github.com/arbaazaj/expensetracker",
-        images: []
+        images: [
+            "screenshots/_main.png",
+            "screenshots/expense_2.png",
+            "screenshots/expense_3.png"
+        ]
     },
     {
         title: "Cipherly",
