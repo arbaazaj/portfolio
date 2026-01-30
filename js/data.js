@@ -10,11 +10,12 @@ const projects = [
         description: "Expense tracking app with charts and Supabase authentication.",
         tech: ["Flutter", "Supabase", "Bloc", "Charts"],
         github: "https://github.com/arbaazaj/expensetracker",
-        images: [
-            "screenshots/_main.png",
-            "screenshots/expense_2.png",
-            "screenshots/expense_3.png"
-        ]
+        screenshots: [
+      "https://raw.githubusercontent.com/arbaazaj/expensetracker/master/screenshots/homepage.png",
+      "https://raw.githubusercontent.com/arbaazaj/expensetracker/master/screenshots/add_transaction.png",
+      "https://raw.githubusercontent.com/arbaazaj/expensetracker/master/screenshots/login_sign_up_screen.png",
+      "https://raw.githubusercontent.com/arbaazaj/expensetracker/master/screenshots/pie_chart.png"
+    ]
     },
     {
         title: "Cipherly",
